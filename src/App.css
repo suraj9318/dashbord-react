@@ -62,13 +62,10 @@ label{
   padding: 8px 15px;
   width: 20rem;
   border-radius: 4px;
-  outline: none;
   border: 2px solid greenyellow;
   margin-block: 5px 0px;
 }
-.form-control:focus{
-  border: 2px solid rgb(154, 253, 4);
-}
+
 
 .btn{
   margin-block: 20px;

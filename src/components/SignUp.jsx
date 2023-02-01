@@ -1,17 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const initialState = {
         name : '',
         email : '',
         password : ''
     }
     const [data, setData] = useState(initialState);
-    const handleSubmit =(e)=>{
-        e.preventDefault();
-        console.table(data);
+    const handleSubmit =async ()=>{
+
+        const result = await fetch('http://localhost:5000/register',{
+        method : 'POST',
+        body :JSON.stringify(data),
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+       })
+       const response = await result.json();
+        localStorage.setItem('userData',JSON.stringify(response))
+        toast.success('signup successfully');
+        navigate('/')
     }
+    useEffect(()=>{
+        const auth  = localStorage.getItem('userData')
+        if(auth){
+            navigate('/')
+        }
+        
+    },[])
   return (
     <div>
         <form className='form'>
@@ -30,7 +50,7 @@ const SignUp = () => {
                 <label htmlFor='password'>Password</label>
                 <input className="form-control" value={data.password}  onChange={(e)=> setData({...data,password:e.target.value})} type="password" name="" id="password" />
             </div>
-            <button className='btn' onClick={(e)=> handleSubmit(e)}>Sign up</button>
+            <button type='button' className='btn' onClick={ handleSubmit}>Sign up</button>
         </form>
     </div>
   )
