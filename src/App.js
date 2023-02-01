@@ -3,10 +3,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Footer from './components/Footer';
+import Login from './components/Login';
 import Navbar from './components/Navbar';
 import PrivateComponent from './components/PrivateComponent';
 import SignUp from './components/SignUp';
-
 function App() {
   return (
     <div className="App">
@@ -24,6 +24,7 @@ function App() {
         </Route>
 
         <Route path='/register' element={<SignUp/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
      </Routes>
      <Footer/>
      <ToastContainer position="top-center"/>
