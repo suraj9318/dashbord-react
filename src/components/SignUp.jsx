@@ -31,7 +31,6 @@ const SignUp = () => {
                 <input className="form-control" value={data.password}  onChange={(e)=> setData({...data,password:e.target.value})} type="password" name="" id="password" />
             </div>
             <button className='btn' onClick={(e)=> handleSubmit(e)}>Sign up</button>
-
         </form>
     </div>
   )
