@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 
 const AddPrdouct = () => {
   
@@ -13,8 +14,23 @@ const AddPrdouct = () => {
 const [data, setData] = useState(initialState)
   
 
-  const handleSubmit =()=>{
-    console.log("add product");
+  const handleSubmit =async()=>{
+    if(data.name && data.price && data.category && data.company ){
+      const request = await fetch('http://localhost:5000/add-product',{
+      method :'POST',
+      body : JSON.stringify(data),
+      headers : {
+        'Content-Type' : 'application/json'
+    }
+  })
+      const response =request.json();
+      toast.success('Product added');
+      setData(initialState)
+    }
+    else{
+      toast.error('Please fill all fields')
+    }
+
   }
   return (
     <>
