@@ -97,6 +97,30 @@ label{
   border: 1px solid green;
   cursor: pointer;
 }
+
+.products-heading{
+    text-align: center;
+    margin-block: 30px;
+    font-style: italic;
+    font-size: 38px;
+    color: #eb425f;
+}
+.table{
+  width: 70%;
+  margin: 50px auto;
+  
+  background-color: rgb(95, 93, 93);
+}
+.table th{
+  border: 1px solid rgb(95, 79, 79);
+  background-color: rgb(202, 82, 102);
+}
+.table td{
+text-align: center;
+border: 1px solid rgb(95, 79, 79);
+background-color: black;
+color: #fff;
+}
 @media screen and (max-width : 600px) {
     .nav-links li a{
       display: none;
