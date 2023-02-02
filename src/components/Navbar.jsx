@@ -6,7 +6,6 @@ const Navbar = () => {
 
     const auth  = localStorage.getItem('userData')
     const data = JSON.parse(auth)
-    console.log(data[0].name)
     const logout = () =>{
         localStorage.clear()   
         navigate('/register');
