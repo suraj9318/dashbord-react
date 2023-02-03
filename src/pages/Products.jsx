@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
-
+import {FaTrashAlt} from 'react-icons/fa'
 const Products = () => {
     const [products,setProducts] = useState([]);
     const getAllProducts = async() =>{
@@ -18,6 +18,22 @@ const Products = () => {
     useEffect(()=>{
         getAllProducts();
     },[])
+
+    const deleteProduct = async(id) =>{
+        const req =await fetch(`http://localhost:5000/delete-product/${id}`,{
+            method : 'DELETE'
+        })
+        const response =await req.json()
+        console.log(response);
+
+        if(response.deletedCount === 1){
+            toast.success('product deleted');
+            getAllProducts()
+        }
+        else{
+            toast.error('something went wrong !!')
+        }
+    }
   return (
     <>
     <div className="table-container">
@@ -29,6 +45,7 @@ const Products = () => {
             <th>Price</th>
             <th>Category</th>
             <th>Company</th>
+            <th>Delete</th>
         </thead>
         <tbody>
         {
@@ -40,6 +57,7 @@ const Products = () => {
             <td>{item.price}</td>
             <td>{item.category}</td>
             <td>{item.company}</td>
+            <td className='trash' onClick={()=>deleteProduct(item._id)}><FaTrashAlt/></td>
             </tr>
             </>)
         })}
