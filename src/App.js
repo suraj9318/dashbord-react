@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import PrivateComponent from './components/PrivateComponent';
 import SignUp from './components/SignUp';
 import Products from './pages/Products';
+import EditProduct from './pages/EditProduct';
 function App() {
   return (
     <div className="App">
@@ -19,7 +20,7 @@ function App() {
 
         <Route path='/' element={<Products/>}></Route>
         <Route path='/add' element={<AddPrdouct/>}></Route>
-        <Route path='/update' element={<h1>Product update</h1>}></Route>
+        <Route path='/update/:id' element={<EditProduct/>}></Route>
         <Route path='/logout' element={<h1>logout</h1>}></Route>
         <Route path='/profile' element={<h1>profile</h1>}></Route>
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
-import {FaTrashAlt} from 'react-icons/fa'
+import {FaTrashAlt, FaEye} from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 const Products = () => {
     const [products,setProducts] = useState([]);
     const getAllProducts = async() =>{
@@ -45,19 +46,22 @@ const Products = () => {
             <th>Price</th>
             <th>Category</th>
             <th>Company</th>
-            <th>Delete</th>
+            <th>Operations</th>
         </thead>
         <tbody>
         {
             products.map((item,index)=>{
-            return (<>
-            <tr key={item.id}>
+            return (<><tr key={item._id}>
             <td>{index+1}</td>
             <td>{item.name}</td>
             <td>{item.price}</td>
             <td>{item.category}</td>
             <td>{item.company}</td>
-            <td className='trash' onClick={()=>deleteProduct(item._id)}><FaTrashAlt/></td>
+            <td  >
+                
+                <FaTrashAlt className='trash' onClick={()=>deleteProduct(item._id)} />
+                <Link to={`/update/${item._id}`}><FaEye className='update-icon'/></Link>
+            </td>
             </tr>
             </>)
         })}

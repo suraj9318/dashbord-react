@@ -114,6 +114,7 @@ label{
 .table th{
   border: 1px solid rgb(95, 79, 79);
   background-color: rgb(202, 82, 102);
+  padding: 8px 0px;
 }
 .table td{
 text-align: center;
@@ -123,8 +124,15 @@ color: #fff;
 }
 .trash{
   color: red !important;
-  padding: 5px;
+  /* padding: 5px; */
   cursor: pointer;
+  margin: 0px 12px;
+}
+.update-icon{
+  color: rgb(129 150 255) !important;
+  /* padding: 5px; */
+  cursor: pointer;
+  font-size: 18px;
 }
 @media screen and (max-width : 600px) {
     .nav-links li a{
