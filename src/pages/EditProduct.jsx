@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 const EditProduct = () => {
-
+const navigate = useNavigate()
     const initialState = {
         name : '',
         price : null,
@@ -32,6 +32,26 @@ const EditProduct = () => {
         useEffect(()=>{
             getProductById();
         },[])
+
+        const handleUpdate =async() =>{
+            const req = await fetch(`http://localhost:5000/update/${data._id}`,{
+                method : "PUT",
+                body : JSON.stringify(data),
+                headers:{
+                    'Content-Type' : 'application/json'
+                }
+            })
+            const response = await req.json()
+            console.log(response);
+            if(response.modifiedCount === 1){
+                toast.success('updated successfully')
+                navigate('/');
+            }
+            else{
+                toast.error('Somehing went wrong')
+                navigate('/');
+            }
+        }
    
   return (
     <div>
@@ -58,7 +78,7 @@ const EditProduct = () => {
                 <input className="form-control" type="text" value={data.company} onChange={(e)=>setData({...data,company:e.target.value})} placeholder="Enter company name" name="" id="category" />
                 <input type="hidden" value={data._id} />
             </div>
-            <button type='button' className='btn' >Update</button>
+            <button type='button' className='btn' onClick={handleUpdate}>Update</button>
         </form>
     </div>
   )

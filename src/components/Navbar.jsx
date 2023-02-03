@@ -16,9 +16,9 @@ const Navbar = () => {
             {auth ? <ul className='nav-links'>
                 <li><Link to='/'>Products</Link></li>
                 <li><Link to='/add'>Add Products</Link></li>
-                <li><Link to='/update'>Update Products</Link></li>
-                <li><Link to='/register' onClick={logout}>Logout ( {data[0].name.substring(0, data[0].name.indexOf(' ') ) } ) </Link></li>
+                {/* <li><Link to='/update'>Update Products</Link></li> */}
                 <li><Link to='/profile'>Profile</Link></li>
+                <li><Link to='/register' onClick={logout}>Logout ( {data[0].name.substring(0, data[0].name.indexOf(' ') ) } ) </Link></li>
             </ul> : 
             <ul className='nav-links'>
             <li><Link to='/login'>Login</Link></li>
