@@ -39,6 +39,10 @@ const Products = () => {
     <>
     <div className="table-container">
             <h2 className='products-heading'>Products</h2>
+            
+        <div className="serch-container">
+            <input type="text" className='search-input' placeholder='Search ...'/>
+        </div>
     <table className='table'>
         <thead>
             <th>S.No</th>
