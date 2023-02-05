@@ -9,7 +9,7 @@ const AddPrdouct = () => {
     price : null,
     category :'',
     company : '',
-    userId : user[0]._id
+    userId : user.user[0]._id
   }
 const [data, setData] = useState(initialState)
   

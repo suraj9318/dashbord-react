@@ -5,7 +5,8 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const auth  = localStorage.getItem('userData')
-    const data = JSON.parse(auth)
+    let data = JSON.parse(auth)
+    
     const logout = () =>{
         localStorage.clear()   
         navigate('/register');
@@ -18,7 +19,7 @@ const Navbar = () => {
                 <li><Link to='/add'>Add Products</Link></li>
                 {/* <li><Link to='/update'>Update Products</Link></li> */}
                 <li><Link to='/profile'>Profile</Link></li>
-                <li><Link to='/register' onClick={logout}>Logout ( {data[0].name.substring(0, data[0].name.indexOf(' ') ) } ) </Link></li>
+                <li><Link to='/register' onClick={logout}>Logout ( {data.user[0].name } ) </Link></li>
             </ul> : 
             <ul className='nav-links'>
             <li><Link to='/login'>Login</Link></li>
