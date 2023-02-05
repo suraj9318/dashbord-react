@@ -38,6 +38,7 @@ const Products = () => {
     const handleSearch = async(e) =>{
         let key  = e.target.value
         if(key){
+            
             const request = await fetch(`http://localhost:5000/search/${key}`,{
                 method :"GET",
             })
@@ -49,7 +50,8 @@ const Products = () => {
                 setProducts(result);
             }
         }
-        else{
+        if(key === ''){
+            setError(false)
             getAllProducts()
         }
     }
